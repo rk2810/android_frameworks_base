@@ -27,3 +27,10 @@
 1.4977h-13.497-13.498v-1.4977zm0-7.4987v-1.5007l13.498 0.000049456h13.497v1.5007
 1.5006h-13.497-13.498v-1.5006z" />
 </vector>
+<resources>
+    <color name="resolver_list_bg">@color/white</color>
+    <color name="immersive_cling_bg_color">#ff009688</color>
+    <color name="immersive_cling_text_color">@color/primary_text_default_material_light</color>
+    <color name="immersive_cling_button_text_color">@android:color/white</color>
+    <color name="app_permission_icon_tint">@android:color/black</color>
+</resources>
