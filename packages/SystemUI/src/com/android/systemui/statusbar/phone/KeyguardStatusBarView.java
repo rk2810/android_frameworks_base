@@ -50,8 +50,6 @@ public class KeyguardStatusBarView extends RelativeLayout
 
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT =
             "cmsystem:" + CMSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT;
-    private static final String STATUS_BAR_BATTERY_STYLE =
-            "cmsystem:" + CMSettings.System.STATUS_BAR_BATTERY_STYLE;
 
     private boolean mBatteryCharging;
     private boolean mKeyguardUserSwitcherShowing;
@@ -72,7 +70,6 @@ public class KeyguardStatusBarView extends RelativeLayout
     private View mSystemIconsContainer;
 
     private boolean mShowBatteryText;
-    private boolean mShowBatteryText2;
 
     public KeyguardStatusBarView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -177,7 +174,7 @@ public class KeyguardStatusBarView extends RelativeLayout
             }
         }
         mBatteryLevel.setVisibility(
-                mBatteryCharging || mShowBatteryText || mShowBatteryText2 ? View.VISIBLE : View.GONE);
+                mBatteryCharging || mShowBatteryText ? View.VISIBLE : View.GONE);
     }
 
     private void updateSystemIconsLayoutParams() {
@@ -202,8 +199,7 @@ public class KeyguardStatusBarView extends RelativeLayout
         }
         mBatteryListening = listening;
         if (mBatteryListening) {
-            TunerService.get(getContext()).addTunable(this, STATUS_BAR_SHOW_BATTERY_PERCENT,
-							STATUS_BAR_BATTERY_STYLE);
+            TunerService.get(getContext()).addTunable(this, STATUS_BAR_SHOW_BATTERY_PERCENT);
             mBatteryController.addStateChangedCallback(this);
         } else {
             mBatteryController.removeStateChangedCallback(this);
@@ -341,9 +337,6 @@ public class KeyguardStatusBarView extends RelativeLayout
         if (key.equals(STATUS_BAR_SHOW_BATTERY_PERCENT)) {
             mShowBatteryText = newValue == null ? false : Integer.parseInt(newValue) == 2;
             updateVisibilities();
-        } else if (key.equals(STATUS_BAR_BATTERY_STYLE)) {
-            mShowBatteryText2 = newValue == null ? false : Integer.parseInt(newValue) == 6;
-
-	}
+        }
     }
 }
