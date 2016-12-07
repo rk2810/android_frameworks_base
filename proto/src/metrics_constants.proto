@@ -2217,9 +2217,9 @@ message MetricsEvent {
     // END OF AOSP CONSTANTS
 
     // crDroid Settings
-    CRDROID_SETTINGS = 496;
+    CRDROID_SETTINGS = 998;
 
     // Quick setting tiles
-    QUICK_SETTINGS = 497;
+    QUICK_SETTINGS = 999;
   }
 }
